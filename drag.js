@@ -1,3 +1,6 @@
+/*
+This looks pretty complex, but it really isn't! This is just the drag-drop mechanism! It even has a few useful functions such as tagify, which makes html clickable! 
+*/
 var dragging;
 $(function () {
     var clientFrameWindow = $('#iframe-select').get(0).contentWindow;

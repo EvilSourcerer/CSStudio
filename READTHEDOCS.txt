@@ -6,4 +6,4 @@ index.html contains the editor. It is very organized and concise.
 
 There are a lot of comments explaining what each part of code is.
 
-All the script links are the heart of the code. Explore one of them to see what's inside of them!
+All the script links are the heart of the code. Explore one of them to see what's inside of them! (Please note that some of the scripts are not by me and may contain an insane amount of code eg. jQuery)

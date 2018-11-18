@@ -1,3 +1,7 @@
+/*
+Hey! This is where all the click events are!
+
+*/
 var previousid = 0;
 var currentelement = null;
 
@@ -18,6 +22,7 @@ function selectcontrol(controlid) /* SELECT A CONTROL */
 }
 function deselect()
 {
+    console.log(previouseid);
     if (previousid != 0)
     {
         var previouselement = innerDoc.getElementById(previousid);
