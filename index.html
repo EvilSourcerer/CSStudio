@@ -1,0 +1,415 @@
+<!---
+Top of index
+██████╗ ██╗     ██╗   ██╗███████╗██╗  ██╗██████╗ ██╗██████╗ ████████╗
+██╔══██╗██║     ██║   ██║██╔════╝██║ ██╔╝██╔══██╗██║██╔══██╗╚══██╔══╝
+██████╔╝██║     ██║   ██║███████╗█████╔╝ ██████╔╝██║██████╔╝   ██║
+██╔══██╗██║     ██║   ██║╚════██║██╔═██╗ ██╔══██╗██║██╔═══╝    ██║
+██████╔╝███████╗╚██████╔╝███████║██║  ██╗██║  ██║██║██║        ██║
+╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝        ╚═╝
+
+██████╗  █████╗ ███╗   ██╗██╗██╗         ██╗  ██╗ ██████╗ ██████╗ ███████╗███╗   ██╗███╗   ██╗██╗   ██╗██╗  ██╗██╗  ██╗
+██╔══██╗██╔══██╗████╗  ██║██║██║         ██║ ██╔╝██╔═══██╗██╔══██╗██╔════╝████╗  ██║████╗  ██║╚██╗ ██╔╝██║ ██╔╝██║  ██║
+██║  ██║███████║██╔██╗ ██║██║██║         █████╔╝ ██║   ██║██████╔╝█████╗  ██╔██╗ ██║██╔██╗ ██║ ╚████╔╝ █████╔╝ ███████║
+██║  ██║██╔══██║██║╚██╗██║██║██║         ██╔═██╗ ██║   ██║██╔══██╗██╔══╝  ██║╚██╗██║██║╚██╗██║  ╚██╔╝  ██╔═██╗ ██╔══██║
+██████╔╝██║  ██║██║ ╚████║██║███████╗    ██║  ██╗╚██████╔╝██║  ██║███████╗██║ ╚████║██║ ╚████║   ██║   ██║  ██╗██║  ██║
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝    ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝
+!--->
+<!DOCTYPE html>
+<html style="overflow-x: hidden;width: 100%;height: 100%;margin: 0px;padding: 0px;">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>CSStudio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/styles.min.css">
+  <link rel="stylesheet" type="text/css" href="treeview.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css">
+  <script src="https://unpkg.com/split.js/split.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
+  <style>
+    .dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+      background-color: #3e8e41;
+    }
+
+    #myInput {
+      border-box: box-sizing;
+      background-image: url('searchicon.png');
+      background-position: 14px 12px;
+      background-repeat: no-repeat;
+      font-size: 16px;
+      background-color: #3c434f;
+      width: 100%;
+      padding: 14px 20px 12px 45px;
+      border: none;
+      color: white;
+    }
+
+    #myInput:focus {}
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      background-color: #282d35;
+      min-width: 230px;
+      overflow: auto;
+      border: 1px solid #ddd;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background-color: #3c434f;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .slidecontainer {
+      width: 100%;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 25px;
+      background: #38373f;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #4CAF50;
+      cursor: pointer;
+    }
+  </style>
+</head>
+  <body style="width: 100%;height: 100%;margin: 0px;padding: 0px;overflow-x: hidden;background-color: rgb(40,31,31);">
+  <div style="width: 100%;height: 100%;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;">
+    <!---
+          CONTROL TOOLBOX BELOW
+     !--->
+    <div id="sidebar" class="split split-horizontal" style="overflow-y: auto;overflow-x: hidden;background-color: rgb(40,39,45);height: 100%;float: left;color: rgb(0,0,0);width: calc(20%);">
+      <div class="dropdown">
+        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+        <div id="myDropdown" class="dropdown-content">
+          <a role="button" draggable="true" style="color:white;" id="dragheading" onmousedown="dragItem('heading',this.id,'down')" onmouseup="dragItem('heading',this.id,'up') ">Heading</a>
+          <a role="button" draggable="true" style="color:white;" id="dragnav" onmousedown="dragItem('navbar',this.id,'down')" onmouseup="dragItem('navbar',this.id,'up')">Navbar</a>
+          <a role="button" draggable="true" style="color:white;" id="dragbutton" onmousedown="dragItem('button',this.id,'down')" onmouseup="dragItem('button',this.id,'up')">Button</a>
+          <a role="button" draggable="true" style="color:white;" id="dragdiv" onmousedown="dragItem('div',this.id,'down')" onmouseup="dragItem('div',this.id,'up')">Div</a>
+        </div>
+      </div>
+    </div>
+    <div id="main" class="split split-horizontal" style="overflow-y: auto;overflow-x: hidden;background-color: rgb(40,39,45);height: 100%;float: left;color: rgb(0,0,0);width: calc(20%);">
+        <iframe id="iframe-select" src="g.html" style="height:90%; width:90%; margin-top:5%; margin-left:5%;"></iframe>
+    </div>
+    <!---
+          ITEM SETTINGS BELOW.
+     !--->
+    <div id="sidebar2" class="split split-horizontal" style="overflow-y: auto;overflow-x: hidden;height: 100%;float: left;width: 100%;background-color: #28272d;width: calc(20%);">
+      <h1 style="visibility: hidden;font-size: 19px;color: rgb(157,157,157);">Styling</h1>
+      <h1 style="visibility: hidden;margin-left: 5px;font-size: 14px;color: rgb(157,157,157);">Width :&nbsp;</h1><input id="widthsetting" oninput="changestyle('width')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-top: 5px;margin-left: 5px;font-size: 14px;color: rgb(157,157,157);">Height :&nbsp;</h1><input id="heightsetting" oninput="changestyle('height')" id="heightinput" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Margin Bottom :&nbsp;</h1><input id="margbotsetting" oninput="changestyle('margbot')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Margin Top :&nbsp;</h1><input id="margtopsetting" oninput="changestyle('margtop')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Margin Left :&nbsp;</h1><input id="margleftsetting" oninput="changestyle('margleft')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Margin Right :&nbsp;</h1><input id="margrightsetting" oninput="changestyle('margright')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Background Color : &nbsp;</h1><input id="backgroundcolorsetting" oninput="changestyle('backcolor')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Font Color : &nbsp;</h1><input id="foregroundcolorsetting" oninput="changestyle('forecolor')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Font Size : &nbsp;</h1><input id="fontsizesetting" oninput="changestyle('fontsize')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Font Style : &nbsp;</h1><input id="fontstylesetting" oninput="changestyle('fontstyle')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+      <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Background Image : &nbsp;</h1><input id="backimagesetting" oninput="changestyle('backimage')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
+    </div>
+    <script src="https://unpkg.com/split.js/split.min.js"></script>
+    <script>
+      Split(['#sidebar', '#main', '#sidebar2'], {
+        minSize: [100, 100, 100],
+        sizes: [20, 60, 20]
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var dragging;
+      /*  */
+      $(function() {
+        var clientFrameWindow = $('#iframe-select').get(0).contentWindow;
+        $("#myDropdown a").on('dragstart', function() {
+          dragging = event.target;
+
+        });
+        $("#myDropdown a").on('dragend', function() {});
+        $('#iframe-select').on('load', function() {
+          var total = 0;
+          $(clientFrameWindow.document.body).find('*').on('dragenter', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            total += 1;
+          }).on('dragover', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            total += 1;
+          });
+
+          $(clientFrameWindow.document).find('body,html').on('drop', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            var iframe = document.getElementById('iframe-select');
+            var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+
+            if (innerDoc.elementsFromPoint(event.clientX, event.clientY)[0].tagName != "section") {
+              if (dragging.id == "dragheading") {
+                var itemid = Math.random().toString(36).substr(2, 9);
+                innerDoc.elementsFromPoint(event.clientX, event.clientY)[0].insertAdjacentHTML('beforeend', '<h1 ondblclick="window.parent.EditElement()" onmousedown="event.stopPropagation();window.parent.selectcontrol(\'' + itemid +
+                  '\')" id=' + itemid + '>heading</h1>');
+              }
+              if (dragging.id == "dragnav") {
+                var itemid = Math.random().toString(36).substr(2, 9);
+                innerDoc.elementsFromPoint(event.clientX, event.clientY)[0].insertAdjacentHTML('beforeend',
+                  '<nav class="navbar navbar-light navbar-expand-xl fixed-top bg-white clean-navbar" safehref="undefined" id="bhy97pcvw" onmousedown="event.stopPropagation(); window.parent.selectcontrol(&quot;bhy97pcvw&quot;);"> <div class="container" safehref="undefined" id="wclroes7t" onmousedown="event.stopPropagation(); window.parent.selectcontrol(&quot;wclroes7t&quot;);"><a class="navbar-brand logo" href="javascript:void(0)" style="margin-right:16px;font-size:13px;" safehref="file:///C:/Users/Sourcerer/Documents/CSStudio_Workspace/electron-quick-start/g.html#" id="nlq4opsa2" onmousedown="event.stopPropagation(); window.parent.selectcontrol(&quot;nlq4opsa2&quot;);" ondblclick="window.parent.EditElement();" onmouseover="window.parent.onhover(this.id)">Simpodex</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button> <div class="collapse navbar-collapse" id="hz27hb1cf" safehref="undefined" onmousedown="event.stopPropagation(); window.parent.selectcontrol(&quot;hz27hb1cf&quot;);"> <ul class="nav navbar-nav ml-auto"> <li class="nav-item" role="presentation" style="width:60px;"><a class="nav-link" href="javascript:void(0)" style="width:62px;font-size:12px;" safehref="https://www.simpodex.com/index.html" id="s6qv3g8hu" onmousedown="event.stopPropagation(); window.parent.selectcontrol(&quot;s6qv3g8hu&quot;);" ondblclick="window.parent.EditElement();" onmouseover="window.parent.onhover(this.id)">Home</a></li> <li class="nav-item" role="presentation"></li> </ul> </div> </div> </nav>'
+                );
+              }
+              if (dragging.id == "dragbutton") {
+                var itemid = Math.random().toString(36).substr(2, 9);
+                innerDoc.elementsFromPoint(event.clientX, event.clientY)[0].insertAdjacentHTML('beforeend',
+                  '<a class="btn btn-primary" role="button" ondblclick="window.parent.EditElement()" onmousedown="event.stopPropagation();window.parent.selectcontrol(\'' + itemid +
+                  '\')" id=' + itemid + '>a</a>');
+              }
+              if (dragging.id == "dragdiv") {
+                var itemid = Math.random().toString(36).substr(2, 9);
+                innerDoc.elementsFromPoint(event.clientX, event.clientY)[0].insertAdjacentHTML('beforeend',
+                  '<div style=""></div>');
+              }
+            }
+
+
+
+          });
+        });
+      });
+      var previousid = 0;
+      var previousstyleborder = "";
+      var previousstylebordercolor = "";
+      var currentelement;
+
+      function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+          if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+          } else {
+            a[i].style.display = "none";
+          }
+        }
+      }
+      setTimeout(function() /*REMOVE ALL LINKS. MAKE IT INTERACTABLE. SET IDS FOR EVERYTHING.*/ {
+        var iframe = document.getElementById('iframe-select');
+        var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        var all = innerDoc.querySelectorAll("a,h1,h2,h3,h4,h5,h6,p,section,nav,footer,div,input");
+
+        for (var i = 0, max = all.length; i < max; i++) {
+          var att = document.createAttribute("safehref");
+          att.value = all[i].href;
+          all[i].setAttributeNode(att);
+          all[i].safehref = all[i].href;
+          all[i].href = "javascript:void(0)";
+          all[i].id = Math.random().toString(36).substr(2, 9);
+          var att = document.createAttribute("onmousedown");
+          att.value = "event.stopPropagation(); window.parent.selectcontrol(\"" + all[i].id + "\");";
+          all[i].setAttributeNode(att);
+          if (all[i].tagName == "A" || all[i].tagName == "H1" || all[i].tagName == "H2" || all[i].tagName == "H3" || all[i].tagName == "H4" || all[i].tagName == "H5" || all[i].tagName == "H6" || all[i].tagName == "P") {
+            var att = document.createAttribute("ondblclick");
+            att.value = "window.parent.EditElement();";
+            all[i].setAttributeNode(att);
+            var att = document.createAttribute("onmouseover");
+            att.value = "window.parent.onhover(this.id)";
+            all[i].setAttributeNode(att);
+          }
+        }
+      }, 300);
+
+      function componentToHex(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return parseInt(result[1], 16) + " " + parseInt(result[2], 16) + " " + parseInt(result[3], 16)
+      }
+
+
+      function selectcontrol(controlid) /* SELECT A CONTROL */ {
+        var iframe = document.getElementById('iframe-select');
+        var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        if (previousid != 0) {
+          var previouselement = innerDoc.getElementById(previousid);
+          previouselement.style.borderStyle = previousstyleborder;
+          previouselement.style.borderColor = previousstylebordercolor;
+          previouselement.contentEditable = false;
+        }
+        currentelement = innerDoc.getElementById(controlid);
+        previousstyleborder = currentelement.style.borderStyle;
+        previousstylebordercolor = currentelement.style.borderColor;
+        currentelement.style.borderStyle = "solid";
+        currentelement.style.borderColor = "#7ccc70";
+        try {
+          document.querySelectorAll('[id=oldcontent],[id=urlsetting]').forEach(element => element.remove());
+        } catch (e) {}
+        if (currentelement.tagName == "A") /* Link settings (includes buttons) */ {
+          document.getElementById("sidebar2").insertAdjacentHTML('beforeend', '<h1 id="oldcontent" style="visibility: hidden;font-size: 19px;color: rgb(157,157,157);">Link Settings</h1>');
+          document.getElementById("sidebar2").insertAdjacentHTML('beforeend', '<h1 id="oldcontent" style="visibility: hidden;font-size: 19px;color: rgb(157,157,157);">Goes to</h1>');
+          if (currentelement.getAttribute("safehref") != null) {
+            document.getElementById("sidebar2").insertAdjacentHTML('beforeend',
+              '<input id="urlsetting" oninput="changestyle(\'href\')" placeholder="URL" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);"value=\"' +
+              currentelement.getAttribute("safehref") + '\">');
+          } else {
+            document.getElementById("sidebar2").insertAdjacentHTML('beforeend',
+              '<input id="urlsetting" oninput="changestyle(\'href\')" placeholder="URL" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);"value=\"' +
+              currentelement.getAttribute("href") + '\">');
+          }
+        }
+        /* Div settings */
+        if (currentelement.tagName == "DIV") {
+          document.getElementById("sidebar2").insertAdjacentHTML('beforeend', '<h1 id="oldcontent" style="visibility: hidden;font-size: 19px;color: rgb(157,157,157);">Div settings</h1>');
+          document.getElementById("sidebar2").insertAdjacentHTML('beforeend', '<h1 id="oldcontent" style="visibility: hidden;font-size: 19px;color: rgb(157,157,157);">Flexbox</h1>');
+
+          if (currentelement.getAttribute("safehref") != null) {
+            document.getElementById("sidebar2").insertAdjacentHTML('beforeend',
+              '<input id="urlsetting" oninput="changestyle(\'href\')" placeholder="URL" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);"value=\"' +
+              currentelement.getAttribute("safehref") + '\">');
+          } else {
+            document.getElementById("sidebar2").insertAdjacentHTML('beforeend',
+              '<input id="urlsetting" oninput="changestyle(\'href\')" placeholder="URL" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);"value=\"' +
+              currentelement.getAttribute("href") + '\">');
+          }
+        }
+        var searchEles = document.getElementById("sidebar2").children;
+        for (var i = 0; i < searchEles.length; i++) {
+          searchEles[i].style.visibility = "visible";
+        }
+        previousid = controlid;
+      }
+
+      function changestyle(value) {
+        if (value == "width") {
+          currentelement.style.width = document.getElementById("widthsetting").value;
+        }
+        if (value == "height") {
+          currentelement.style.height = document.getElementById("heightsetting").value;
+        }
+        if (value == "margbot") {
+          currentelement.style.marginBottom = document.getElementById("margbotsetting").value;
+        }
+        if (value == "margtop") {
+          currentelement.style.marginTop = document.getElementById("margtopsetting").value;
+        }
+        if (value == "margleft") {
+          currentelement.style.marginLeft = document.getElementById("margleftsetting").value;
+        }
+        if (value == "margright") {
+          currentelement.style.marginRight = document.getElementById("margrightsetting").value;
+        }
+        if (value == "href") {
+          if (document.getElementById("urlsetting").value == "") {
+            currentelement.setattribute("safehref", "javascript:void(0)");
+          } else {
+            currentelement.setAttribute("safehref", document.getElementById("urlsetting").value);
+          }
+        }
+        if (value == "backcolor") {
+          currentelement.style.backgroundColor = document.getElementById("backgroundcolorsetting").value;
+        }
+        if (value == "forecolor") {
+          currentelement.style.color = document.getElementById("foregroundcolorsetting").value;
+        }
+        if (value == "backimage") {
+          currentelement.style.backgroundImage = "url(" + document.getElementById("backimagesetting").value + ")";
+        }
+      }
+      const electronLocalshortcut = require('electron-localshortcut');
+      var undoqueue = [];
+      var undoparent = [];
+      /*  */
+      electronLocalshortcut.register(require('electron').remote.getCurrentWindow(), 'Ctrl+D', () => {
+        currentelement.parentElement.insertAdjacentHTML('beforeend', currentelement.outerHTML);
+      });
+      /* DELETE CONTROL */
+      electronLocalshortcut.register(require('electron').remote.getCurrentWindow(), 'Delete', () => {
+        undoparent.push(currentelement.parentElement);
+        undoqueue.push(currentelement.outerHTML);
+        var tempcurrent = currentelement.parentElement;
+        currentelement.remove();
+        currentelement = tempcurrent;
+        previousid = 0;
+      });
+      /* UNDO */
+      electronLocalshortcut.register(require('electron').remote.getCurrentWindow(), 'Ctrl+Z', () => {
+        undoparent[undoparent.length - 1].insertAdjacentHTML('beforeend', undoqueue[undoqueue.length - 1]);
+        var xmlString = undoqueue[undoqueue.length - 1];
+        parser = new DOMParser();
+        doc = parser.parseFromString(xmlString, "text/xml");
+        innerDoc.getElementById(doc.id).style.borderStyle = previousstyleborder;
+        undoparent.length -= 1;
+        undoqueue.length -= 1;
+      });
+
+      function EditElement() /* ALLOWS BUTTONS OTHER TEXT TO BE EDITABLE. */ {
+        var att = document.createAttribute("contenteditable");
+        att.value = "true";
+        currentelement.setAttributeNode(att);
+        currentelement.focus();
+      }
+      var OGhtml = "";
+
+      function onhover(id) {
+        hovered = id;
+      }
+    </script>
+    <script src="treeview.js"></script>
+</body>
+
+</html>
