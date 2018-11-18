@@ -4,15 +4,16 @@ Hey! This is where all the click events are!
 */
 var previousid = 0;
 var currentelement = null;
-
 function selectcontrol(controlid) /* SELECT A CONTROL */
 {
-    try { document.getElementById("sidebar2").querySelectorAll('*').forEach(element => element.remove()); } catch{ }
+    try { document.getElementById("sidebar2").querySelectorAll('*').forEach(element => element.remove()); } catch{ console.log("oops"); }
+    
+    
+    deselect();
+    
     var iframe = document.getElementById('iframe-select');
     var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-    deselect();
     currentelement = innerDoc.getElementById(controlid);
-
     previousstyleborder = currentelement.style.borderStyle;
     previousstylebordercolor = currentelement.style.borderColor;
     currentelement.style.borderStyle = "solid";
@@ -22,7 +23,8 @@ function selectcontrol(controlid) /* SELECT A CONTROL */
 }
 function deselect()
 {
-    console.log(previouseid);
+    var iframe = document.getElementById('iframe-select');
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
     if (previousid != 0)
     {
         var previouselement = innerDoc.getElementById(previousid);

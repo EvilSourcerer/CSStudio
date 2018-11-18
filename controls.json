@@ -1,4 +1,6 @@
 {
-    "heading": "<h1>Heading</h1>",
-    "navbar": ""
+    "Heading": "<h1>Heading</h1>",
+    "Navbar": "<nav class='navbar navbar-light navbar-expand-xl fixed-top bg-white clean-navbar\"> <div class=\"container\"><a class=\"navbar-brand logo\" href=\"#\" style=\"margin-right:16px;font-size:13px;\">Simpodex<\/a><button class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#navcol-1\"><span class=\"sr-only\">Toggle navigation<\/span><span class=\"navbar-toggler-icon\"><\/span><\/button> <div class=\"collapse navbar-collapse\" id=\"navcol-1\"> <ul class=\"nav navbar-nav ml-auto\"> <li class=\"nav-item\" role=\"presentation\" style=\"width:60px;\"><a class=\"nav-link\" href=\"https:\/\/www.simpodex.com\/index.html\" style=\"width:62px;font-size:12px;\">Home<\/a><\/li> <\/ul> <\/div> <\/div> <\/nav>",
+    "Button": "<a class=\"btn btn-primary\" role=\"button\" >button<\/a>",
+    "Div": "<div style=\"height:100px; width:100%; background-color:rgb(255, 0, 157)\"><\/div>"
 }

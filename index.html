@@ -47,10 +47,6 @@ READ THE DOCUMENTATION! IT'S WORTH IT!
             <div class="dropdown">
                 <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
                 <div id="myDropdown" class="dropdown-content">
-                    <a role="button" draggable="true" style="color:white;" id="dragheading">Heading</a>
-                    <a role="button" draggable="true" style="color:white;" id="dragnav">Navbar</a>
-                    <a role="button" draggable="true" style="color:white;" id="dragbutton">Button</a>
-                    <a role="button" draggable="true" style="color:white;" id="dragdiv">Div</a>
                 </div>
             </div>
         </div>
@@ -65,43 +61,9 @@ READ THE DOCUMENTATION! IT'S WORTH IT!
           ITEM SETTINGS BELOW.
      !--->
         <div id="sidebar2" class="split split-horizontal" style="overflow-y: auto;overflow-x: hidden;height: 100%;float: left;width: 100%;background-color: #28272d;width: calc(20%);">
-            <h1 style="visibility: hidden;font-size: 19px;color: rgb(157,157,157);">Styling</h1>
-            <h1 style="visibility: hidden;margin-left: 5px;font-size: 14px;color: rgb(157,157,157);">Width :&nbsp;</h1><input
-                id="widthsetting" oninput="changestyle('width')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-top: 5px;margin-left: 5px;font-size: 14px;color: rgb(157,157,157);">Height
-                :&nbsp;</h1><input id="heightsetting" oninput="changestyle('height')" id="heightinput" placeholder="0px"
-                style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Margin
-                Bottom :&nbsp;</h1><input id="margbotsetting" oninput="changestyle('margbot')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Margin
-                Top :&nbsp;</h1><input id="margtopsetting" oninput="changestyle('margtop')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Margin
-                Left :&nbsp;</h1><input id="margleftsetting" oninput="changestyle('margleft')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Margin
-                Right :&nbsp;</h1><input id="margrightsetting" oninput="changestyle('margright')" placeholder="0px"
-                style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Background
-                Color : &nbsp;</h1><input id="backgroundcolorsetting" oninput="changestyle('backcolor')" placeholder="0px"
-                style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Font
-                Color : &nbsp;</h1><input id="foregroundcolorsetting" oninput="changestyle('forecolor')" placeholder="0px"
-                style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Font
-                Size : &nbsp;</h1><input id="fontsizesetting" oninput="changestyle('fontsize')" placeholder="0px" style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Font
-                Style : &nbsp;</h1><input id="fontstylesetting" oninput="changestyle('fontstyle')" placeholder="0px"
-                style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Background
-                Image : &nbsp;</h1><input id="backimagesetting" oninput="changestyle('backimage')" placeholder="0px"
-                style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Float
-                : &nbsp;</h1><input id="floatsetting" oninput="changestyle('float')" placeholder="top/bottom/left/right"
-                style="visibility: hidden;width: 95%;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);">
-            <h1 style="visibility: hidden;margin-left: 5px;margin-top: 5px;font-size: 14px;color: rgb(157,157,157);">Custom
-                CSS : &nbsp;</h1><textarea id="customcss" oninput="changestyle('custom')" placeholder="One per line..."
-                style="visibility: hidden;width: 95%;height:auto;margin-left: 5px;outline: none;border-style: none;border-bottom: 1px solid rgb(102,182,255);background-color: rgb(51,50,58);color: rgb(255,255,255);"></textarea>
         </div>
         <!-- Hey! This is where all the afterload scripts go!  (Once the site has already loaded) !-->
+        <script src="draggables.js"></script>
         <script src="initsplits.js"></script>
         <script src="gethtml.js"></script>
         <script src="drag.js"></script>
