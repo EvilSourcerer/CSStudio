@@ -1,0 +1,9 @@
+Hey, it's me Danil. Here's the basics of what you want to do to start programming.
+
+The file you want to modify is index.html
+
+index.html contains the editor. It is very organized and concise. 
+
+There are a lot of comments explaining what each part of code is.
+
+All the script links are the heart of the code. Explore one of them to see what's inside of them!

@@ -20,6 +20,12 @@ String.prototype.padStart   = (String.prototype.padStart   || function(len, pad)
 const colorNames = '735AACA770//Xub218Pj/mo5+uvX6mdAP//gtpf//Ur258P//q1d9fXcxop/+TEq9zAAAAqfg/+vN6m1AAD/ngoiiviqt6pSoqzyo3riHxvdX56grk1f/8Aax10mkeqts/39QxbtZJXttkb//jcyxm3BQ86rmAP//wl5AACLwqqAIuL3y8uIYLwv1qampniqAGQAns5vbdrmohiwCLw5uVWsvsdd/4wAsegmTLMqagiwAAsqi6ZZ6uz6j7yPxtzSD2Lxk3L09PudbAM7RwsolADT0kz/xSTfuhAL//vfhaWlpyuxHpD/43rsiIiwn9//rw39uIosi9bp/wD/6w73Nzc9s5+Pj/6v8/9cA3b42qUg6vxgICArmaAIAAtdfrf8vf9n8P/wek3/2m0xnczVxc3bvSwCCsdt///wrvp8OaMs5i5ub6iyk//D1e8ifPwAoui//rNpyxrdjmw9c8ICAq4i4P//mx9+vrSq8t09PTx1ukO6Qqlv/7bBuuy/6B690uILKqpfdh876sd9d4iZnehsMTe0dv///g71lAP8A4nmMs0ys9u+vDmg9d/wD/4pmgAAAcurZs2qzllAADN4lkulXT6txk3Db66qPLNxozre2juokuAPqalj3SNHMgdkxxWF60pGRlwxfl9f/6hr5/+Thx6q/+S1m85/96tutd/fXmszxgIAAe4ma44j8rl/6UAmu0/0UA8so2nDWji87uiqumqmPuY9xbr+7u4rs23CTsb8/+/V95a/9q577xzYU/78z/8DL7b53aDdsu1sODmb11gACAy5nZjOZ1so/wAAlvevI+Pn09QWnhm7ui0UT94q+oBy7ei9KRg5aqLotXad5oFItasmwMDAaihh87r9fdalrN9p9cICQ7gz//r6k5uAP9/4qhRoK01te0rSM7cwAICA91x2L/Yclr/2NHcw1QODQd6w7oLuua09d6zudh////t359fX1enn//8Ao0ims0y';
 let  colorNamesDeser;
 
+function printNum(num, decs = 1) {
+	const str = (decs > 0) ? num.toFixed(decs).replace(/0+$/, '').replace(/\.$/, '')
+	                       : num.toString();
+	return str || '0';
+}
+
 
 class Color {
 
@@ -74,7 +80,7 @@ class Color {
 
 		//Single input - CSS string
 		else if( b === undefined ) {
-			const color = r && ('' + r).trim();
+			const color = r && ('' + r);
 			if(color) {
 				parseString(color.toLowerCase());
 			}
@@ -94,15 +100,21 @@ class Color {
 		
 		return (this._rgba = Color.hslToRgb(this._hsla));
 	}
-	get rgbString()  { return `rgb(${ this.rgba.slice(0, 3) })`; }
-	get rgbaString() { return `rgba(${ this.rgba })`; }
-
 	set rgba(rgb) {
 		if(rgb.length === 3) { rgb[3] = 1; }
 		
 		this._rgba = rgb;
 		this._hsla = null;
 	}
+
+	printRGB(alpha) {
+		const rgb = alpha ? this.rgba : this.rgba.slice(0, 3),
+			  vals = rgb.map((x, i) => printNum(x, (i === 3) ? 3 : 0));
+
+		return alpha ? `rgba(${ vals })` : `rgb(${ vals })`;
+	}
+	get rgbString()  { return this.printRGB(); }
+	get rgbaString() { return this.printRGB(true); }
 
 
 	/* HSLA representation */
@@ -113,21 +125,26 @@ class Color {
 		
 		return (this._hsla = Color.rgbToHsl(this._rgba));
 	}
-	get hslString() {
-		const c = this.hsla;
-		return `hsl(${ c[0]*360 },${ c[1]*100 }%,${ c[2]*100 }%)`;
-	}
-	get hslaString() {
-		const c = this.hsla;
-		return `hsla(${ c[0]*360 },${ c[1]*100 }%,${ c[2]*100 }%,${ c[3] })`;
-	}
-
 	set hsla(hsl) {
 		if(hsl.length === 3) { hsl[3] = 1; }
 		
 		this._hsla = hsl;
 		this._rgba = null;
 	}
+
+	printHSL(alpha) {
+		const mults = [360, 100, 100, 1],
+			  suff =  ['', '%', '%', ''];
+
+		const hsl = alpha ? this.hsla : this.hsla.slice(0, 3),
+			  //in printNum(), use enough decimals to represent all RGB colors:
+			  //https://gist.github.com/mjackson/5311256#gistcomment-2336011
+			  vals = hsl.map((x, i) => printNum(x * mults[i], (i === 3) ? 3 : 1) + suff[i]);
+		
+		return alpha ? `hsla(${ vals })` : `hsl(${ vals })`;
+	}
+	get hslString()  { return this.printHSL(); }
+	get hslaString() { return this.printHSL(true); }
 
 
 	/* HEX representation */
@@ -139,20 +156,24 @@ class Color {
 
 		return '#' + hex.map(x => x.padStart(2, '0')).join('');
 	}
-	
 	set hex(hex) {
 		this.rgba = Color.hexToRgb(hex);
 	}
 
+	printHex(alpha) {
+		const hex = this.hex;
+		return alpha ? hex : hex.substring(0, 7);
+	}
 
 
 	/* Conversion utils */
 
 
 	/**
-	 * Normalize all hex codes (3/4/6/8 digits) to 8 digits RGBA
+	 * Splits a HEX string into its RGB(A) components
 	 */
     static hexToRgb(input) {
+    	//Normalize all hex codes (3/4/6/8 digits) to 8 digits RGBA
 		const hex = (input.startsWith('#') ? input.slice(1) : input)
 			.replace(/^(\w{3})$/,          '$1F')                   //987      -> 987F
 			.replace(/^(\w)(\w)(\w)(\w)$/, '$1$1$2$2$3$3$4$4')      //9876     -> 99887766
@@ -170,7 +191,7 @@ class Color {
 
 
 	/**
-	 * Get the RGB values from a CSS color name
+	 * Gets the RGB value from a CSS color name
 	 */
 	static nameToRgb(input) {
 		//See comments on colorNames

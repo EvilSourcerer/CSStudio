@@ -7,8 +7,11 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
-
+  mainWindow = new BrowserWindow({width:1920,height:1080,x: 0, y:0,title:"CSStudio",backgroundColor:"#292929",show:false})
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+    mainWindow.maximize()
+  })
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
