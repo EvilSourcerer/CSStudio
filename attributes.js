@@ -19,16 +19,18 @@ function addAttributeListener(id, attrtype, placeholder, title, style)
 
 }
 
-function editAttr(id, attrtype, editid,style)
+function editAttr(id /* This is the id of the thing your editing */, attrtype,editid,style)
 {
-    var newval=document.getElementById(id);
-    var element = (document.getElementById('iframe-select').contentDocument || document.getElementById('iframe-select').contentWindow.document).getElementById(id);
+    var newval=document.getElementById(editid).value;
+    var iframe = document.getElementById('iframe-select');
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var theelement = innerDoc.getElementById(id);
     if(style)
     {
-        element.style.setAttribute(attrtype,newval);
+        theelement.style.setProperty(attrtype,newval);
     }
     else
     {
-        element.setAttribute(attrtype,newval);
+        theelement.setAttribute(attrtype,newval);
     }
 }

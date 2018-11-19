@@ -4,7 +4,7 @@ Hey! This is where all the click events are!
 */
 var previousid = 0;
 var currentelement = null;
-function selectcontrol(controlid) /* SELECT A CONTROL */
+function selectcontrol(controlid,controltype) /* SELECT A CONTROL */
 {
     try { document.getElementById("sidebar2").querySelectorAll('*').forEach(element => element.remove()); } catch{ console.log("oops"); }
     
@@ -18,7 +18,18 @@ function selectcontrol(controlid) /* SELECT A CONTROL */
     previousstylebordercolor = currentelement.style.borderColor;
     currentelement.style.borderStyle = "solid";
     currentelement.style.borderColor = "#7ccc70";
-    addAttributeListener(currentelement.id, "href", "lidfshnk", "Ldfshink");
+    // function addAttributeListener(id, attrtype, placeholder, title, style)
+
+    var fs = require('fs');
+    var obj = JSON.parse(fs.readFileSync(__dirname + '\\options.json', 'utf8'));
+    for(secondkey in obj[controltype])
+    {
+        addAttributeListener(currentelement.id,obj[controltype][secondkey][1],obj[controltype][secondkey][0],obj[controltype][secondkey][0],obj[controltype][secondkey][2]);
+    }
+    for(key in obj.Global)
+    {
+        addAttributeListener(currentelement.id,obj.Global[key][1],obj.Global[key][0],obj.Global[key][0],obj.Global[key][2]);
+    }
     previousid = controlid;
 }
 function deselect()

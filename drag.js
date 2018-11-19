@@ -49,7 +49,7 @@ function tagify(htmlcode)
         all[i].setAttribute("safehref",all[i].getAttribute("href"));
         all[i].setAttribute("href","javascript:void(0)");
         all[i].setAttribute("ondblclick","window.parent.editElement()");
-        all[i].setAttribute("onmousedown","event.stopPropagation();window.parent.selectcontrol('" + itemid + "');");
+        all[i].setAttribute("onmousedown","event.stopPropagation();window.parent.selectcontrol('" + itemid + "','" + dragging.innerHTML + "');");
     }
     return new XMLSerializer().serializeToString(doc);
 }

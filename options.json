@@ -1,0 +1,19 @@
+{
+    "Heading": [
+       ["Text","innerHTML",false]
+    ],
+    "Navbar": [
+    ],
+    "Button": [
+    ],
+    "Div": [
+    ],
+    "Global": [
+       ["Background Color","background-color",true],
+       ["Font Color","color",true],
+       ["Top Margin","margin-top",true],
+       ["Left Margin","margin-left",true],
+       ["Right Margin","margin-right",true],
+       ["Bottom Margin","margin-bottom",true]
+    ]
+ }
