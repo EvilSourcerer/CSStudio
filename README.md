@@ -1,6 +1,7 @@
 # CSStudio
 <img src="https://i.imgur.com/EWJu8V4.png" width="200" height="200">
 ## The Website Editor for people who like freedom
+
 **Welcome to the quick start to begin contributing to CSStudio. You will find the main editor [here](index.html)**
 
 **We strongly recommend you download [Visual Studio Code](https://code.visualstudio.com/) because of it's powerful intellisense for javascript.**
