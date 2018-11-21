@@ -1,7 +1,8 @@
 Split(['#sidebar', '#main', '#sidebar2'],
 {
     minSize: [100, 100, 100],
-    sizes: [20, 60, 20]
+    sizes: [20, 60, 20],
+    cursor: 'ew-resize'
 });
 Split(['#frame', '#text'],
 {

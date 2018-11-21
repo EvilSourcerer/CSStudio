@@ -19,6 +19,7 @@ $(function () {
             var fs = require('fs');
             var obj = JSON.parse(fs.readFileSync(__dirname + '\\controls.json', 'utf8'));
             innerDoc.elementsFromPoint(event.clientX, event.clientY)[0].insertAdjacentHTML('beforeend', tagify(obj[key]));
+            updateHTML();
         }
     });
     $('#iframe-select').on('load', function () {
@@ -52,4 +53,14 @@ function tagify(htmlcode)
         all[i].setAttribute("onmousedown","event.stopPropagation();window.parent.selectcontrol('" + itemid + "','" + dragging.innerHTML + "');");
     }
     return new XMLSerializer().serializeToString(doc);
+}
+function updateHTML()
+{
+    var iframe = document.getElementById('iframe-select');
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var safe = new XMLSerializer().serializeToString(innerDoc);
+    var editor = ace.edit("editor");
+    var pretty=require("pretty");
+    safe=pretty(safe,false);
+    editor.session.setValue(safe);
 }

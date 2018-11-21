@@ -1,3 +1,9 @@
+.gutter.gutter-horizontal {
+  cursor:ew-resize;
+}
+.gutter.gutter-vertical {
+  cursor:s-resize;
+}
 .dropbtn {
   background-color: #4CAF50;
   color: white;

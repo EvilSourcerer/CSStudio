@@ -26,13 +26,15 @@ READ THE DOCUMENTATION! IT'S WORTH IT!
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- Hey! This is where all the preloads go (Things that load before the actual website)!-->
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-    <link rel="stylesheet" href="main.css"> <!-- this is really messy -->
-    <script src="split.min.js"></script>
-    <script src="ace.js"></script>
-    <script src="theme-monokai.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css"> <!-- Do not touch! You will regret it! -->
+    <link rel="stylesheet" href="assets/css/styles.min.css"> <!-- Do not touch! You will regret it! -->
+    <link rel="stylesheet" href="main.css">
+    <script src="split.min.js"></script> <!-- Do not touch! You will regret it! -->
+    <script src="ace.js"></script> <!-- Do not touch! You will regret it! -->
+    <script src="theme-monokai.js"></script> <!-- Do not touch! You will regret it! -->
     <script src="preload.js"></script>
+    <script src="mode-html.js"></script>
+    <script src="htmleditor.js"></script>
 </head>
 
 <body style="width: 100%;height: 100%;margin: 0px;padding: 0px;overflow-x: hidden;background-color: rgb(40,31,31);" id="body">
@@ -51,10 +53,11 @@ READ THE DOCUMENTATION! IT'S WORTH IT!
             </div>
         </div>
         <div id="main" class="split split-horizontal" style="overflow-y: auto;overflow-x: hidden;background-color: rgb(40,39,45);height: 100%;float: left;color: rgb(0,0,0);width: calc(20%);">
-            <div class="split content" style="height:100%; width:100%" id="frame"><iframe id="iframe-select" src="blank.html"
-                    style="height:100%; width:100%;"></iframe></div>
-            <div class="split" style="height:100%; width:100%;" id="text">
-                <div id="editor" style="height:100%; width:100%;"></div>
+            <div class="split content" style="height:100%; width:100%; background-color:#3D3D42" id="frame">
+                <iframe id="iframe-select" src="blank.html" style="height:100%; width:100%;"></iframe></div>
+            <div class="split" style="height:100%; width:100%;background-color: rgb(40,39,45);" id="text">
+                <button type="button" onclick="changeHTML()" class="btn btn-primary shadow-none" style="font-size:12px; color:grey;background-color:#3D3D42; border:none;outline:none;">Apply</button>
+                <pre id="editor" style="height:100%; width:100%;"></pre>
             </div>
         </div>
         <!---

@@ -1,9 +1,4 @@
-Hey, it's me Danil. Here's the basics of what you want to do to start programming.
+Hey! Welcome to CSSTudio! Hope the code isn't too messy! This will get you set up to contribute to the project.
 
-The file you want to modify is index.html
+The main editor is located at index.html..
 
-index.html contains the editor. It is very organized and concise. 
-
-There are a lot of comments explaining what each part of code is.
-
-All the script links are the heart of the code. Explore one of them to see what's inside of them! (Please note that some of the scripts are not by me and may contain an insane amount of code eg. jQuery)
