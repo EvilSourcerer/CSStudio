@@ -1,5 +1,5 @@
 # CSStudio
-<img src="https://i.imgur.com/EWJu8V4.png" size="100x">
+<img src="https://i.imgur.com/EWJu8V4.png" size="200px">
 ## The Website Editor for people who like freedom
 **Welcome to the quick start to begin contributing to CSStudio. You will find the main editor [here](index.html)**
 ## 
