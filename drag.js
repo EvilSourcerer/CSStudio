@@ -12,8 +12,6 @@ $(function () {
         event.stopPropagation();
         var iframe = document.getElementById('iframe-select');
         var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-
         if (innerDoc.elementsFromPoint(event.clientX, event.clientY)[0].tagName != "section") {
             var key=dragging.innerHTML;
             var fs = require('fs');
@@ -43,14 +41,15 @@ function tagify(htmlcode)
 {
     parser = new DOMParser();
     doc = parser.parseFromString(htmlcode, "text/xml");
-    var all = doc.querySelectorAll("a,h1,h2,h3,h4,h5,h6,p,section,nav,footer,div,input");
+    var all = doc.querySelectorAll("a,h1,h2,h3,h4,h5,h6,p,section,nav,footer,div,input,button");
     for (var i = 0, max = all.length; i < max; i++) {
         var itemid=Math.random().toString(36).substr(2, 9);
         all[i].id = itemid;
         all[i].setAttribute("safehref",all[i].getAttribute("href"));
         all[i].setAttribute("href","javascript:void(0)");
-        all[i].setAttribute("ondblclick","window.parent.editElement()");
+        all[i].setAttribute("ondblclick","window.parent.editElement(\"" + itemid + "\")");
         all[i].setAttribute("onmousedown","event.stopPropagation();window.parent.selectcontrol('" + itemid + "','" + dragging.innerHTML + "');");
+        console.log(all[i]);
     }
     return new XMLSerializer().serializeToString(doc);
 }

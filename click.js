@@ -41,6 +41,6 @@ function deselect()
         var previouselement = innerDoc.getElementById(previousid);
         previouselement.style.borderStyle = previousstyleborder;
         previouselement.style.borderColor = previousstylebordercolor;
-        previouselement.contentEditable = false;
+        previouselement.contentEditable=false;
     }
 }

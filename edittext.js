@@ -1,6 +1,6 @@
-function EditElement() /* ALLOWS BUTTONS OTHER TEXT TO BE EDITABLE. */ {
-    var att = document.createAttribute("contenteditable");
-    att.value = "true";
-    currentelement.setAttributeNode(att);
-    currentelement.focus();
+function editElement(id) {
+    var iframe = document.getElementById('iframe-select');
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var currentelement=innerDoc.getElementById(id);
+    currentelement.setAttribute("contenteditable","true");
 }

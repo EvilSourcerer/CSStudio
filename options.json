@@ -1,6 +1,6 @@
 {
     "Heading": [
-       ["Text","innerHTML",false]
+       ["Text","text-content",false]
     ],
     "Navbar": [
     ],
